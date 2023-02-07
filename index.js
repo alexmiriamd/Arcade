@@ -16,8 +16,8 @@
 // variables
 const onePlayerButton = document.getElementById("onePlayer");
 const twoPlayerButton = document.getElementById("twoPlayer");
-console.log(onePlayerButton)
 let playerOneName = document.getElementById('playerX');
+let playerTwoName = document.getElementById("playerO")
 
 
 let board = document.getElementById("board");
@@ -28,5 +28,12 @@ let cell = document.getElementsByClassName("cells");
 onePlayerButton.addEventListener('click', function(){
     let playerName = prompt('Player one name?', ['player one']);
     playerOneName.innerText = playerName;
-    
+    playerTwoName.innerText = "computer"
+})
+
+twoPlayerButton.addEventListener('click', function(){
+    let playerName01 = prompt("Player one name?", ['player one']);
+    playerOneName.innerText = playerName01;
+    let playerName02 = prompt("Player two name?", ['player two']);
+    playerTwoName.innerText = playerName02;
 })
