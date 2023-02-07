@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+/* tic tac toe board basis */
+
+/* body{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+#board{
+   width: 600px;
+   height: 600px;
+
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   
+}
+
+.cell{
+   flex: 0 0 200px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+}
+
+.cell:nth-child(3n+2) {
+    border-right: solid #053259 5px;
+    border-left: solid #053259 5px;
+}
+
+.cell:nth-child(n+4):nth-child(-n+6) {
+    border-top: solid #053259 5px;
+    border-bottom: solid #053259 5px;
+}
