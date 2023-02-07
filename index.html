@@ -6,23 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>arcade</title>
     <link rel="stylesheet" href="index.css">
-    <script src = "index.js"></script>
+    <script defer src = "index.js"></script>
 </head>
 <body>
     <header>
         <h1>
             Tic-Tac-Toe
         </h1>
-        <h3>
-            <button type = "button" id = onePlayer>
+        <div class = playerAmount>
+            <button type = "button" id = "onePlayer">
                 one player
                 <!-- pressing this makes the computer the other player, prompt player 1 name input after press -->
             </button>
-            <button type = "button" id = twoPlayer>
+            <button type = "button" id = "twoPlayer">
                 two player
                 <!-- two people playing on same computer, prompt players names input after press-->
             </button>
-        </h3>
+        </div>
     </header>
     <div id = "board">
         <div class="cell"><span></span></div>
@@ -38,13 +38,13 @@
     <div>
         <p>
             player x: 
-            <span id = playerX>
+            <span id = "playerX">
                 
             </span>
         </p>
         <p>
             player o: 
-            <span id = playerO>
+            <span id = "playerO">
                 
             </span>
         </p>
