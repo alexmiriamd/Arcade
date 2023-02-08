@@ -20,7 +20,7 @@ const gameState = {           //setting game state object; to keep track of move
     ]
 }
 
-let currentPlayer = gameState.players[0];       //tictactoe rules player x always first; [1] would be o.
+let currentPlayer = gameState.players[0];       //tic-tac-toe rules player x always first; [1] would be 'o'.
 
 
 // player amount buttons
@@ -41,7 +41,7 @@ twoPlayerButton.addEventListener('click', function(){
 //playing the game.
 
 board.addEventListener('click', placeMark)
-    function placeMark(event){                          // this also needs to reflect the mark in the gameState array...
+    function placeMark(event){                        
         if(event.target){
             const target = event.target;
             if(currentPlayer === 'x'){
@@ -53,7 +53,6 @@ board.addEventListener('click', placeMark)
             }
             turnChange();
         }
-        console.log(event.target);
     }
 
 function turnChange(){
@@ -65,25 +64,63 @@ function turnChange(){
     }
 }
 
-function updateGameBoard(target){                       //reflecting the turns to the gameBoard array!
+function updateGameBoard(target){                       //reflecting the turns to the gameBoard array
     if(target.id === "cell1"){
         gameState.board[0][0] = currentPlayer;
-    } else if(target.id === "cell2"){
+        checkForWin();
+    } else if(target.id === "cell2"){              
         gameState.board[0][1] = currentPlayer;
+        checkForWin();
     } else if(target.id === "cell3"){
         gameState.board[0][2] = currentPlayer;
+        checkForWin();
     } else if(target.id === "cell4"){
         gameState.board[1][0] = currentPlayer;
+        checkForWin();
     } else if(target.id === "cell5"){
         gameState.board[1][1] = currentPlayer;
+        checkForWin();
     } else if(target.id === "cell6"){
         gameState.board[1][2] = currentPlayer;
+        checkForWin();
     } else if(target.id === "cell7"){
         gameState.board[2][0] = currentPlayer;
+        checkForWin();
     } else if(target.id === "cell8"){
         gameState.board[2][1] = currentPlayer;
+        checkForWin();
     } else if(target.id === "cell9"){
         gameState.board[2][2] = currentPlayer;
+        checkForWin();
     }
     console.log(gameState.board);
+}
+
+function announceWinner(){
+    alert(`yay!! ${currentPlayer} wins!`);
+}
+
+function checkForWin(){                     //checking for all wins, invoked in updateGameBoard function
+    //row wins
+    if(gameState.board[0][0] === currentPlayer && gameState.board[0][1] === currentPlayer && gameState.board[0][2] === currentPlayer){
+        announceWinner();
+    } else if(gameState.board[1][0] === currentPlayer && gameState.board[1][1] === currentPlayer && gameState.board[1][2] === currentPlayer){
+        announceWinner();
+    } else if(gameState.board[2][0] === currentPlayer && gameState.board[2][1] === currentPlayer && gameState.board[2][2] === currentPlayer){
+        announceWinner();
+    } else 
+    //column wins
+    if(gameState.board[0][0] === currentPlayer && gameState.board[1][0] === currentPlayer && gameState.board[2][0] === currentPlayer){
+        announceWinner();
+    } else if(gameState.board[0][1] === currentPlayer && gameState.board[1][1] === currentPlayer && gameState.board[2][1] === currentPlayer){
+        announceWinner();
+    } else if(gameState.board[0][2] === currentPlayer && gameState.board[1][2] === currentPlayer && gameState.board[2][2] === currentPlayer){
+        announceWinner();
+    } else 
+    //diagonal wins
+    if(gameState.board[0][0] === currentPlayer && gameState.board[1][1] === currentPlayer && gameState.board[2][2] === currentPlayer){
+        announceWinner();
+    } else if(gameState.board[0][2] === currentPlayer && gameState.board[1][1] === currentPlayer && gameState.board[2][0] === currentPlayer){
+        announceWinner();
+    }
 }
