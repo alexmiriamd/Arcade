@@ -1,13 +1,13 @@
 
 
 // variables
-        //buttons and names
+        //buttons and names variables
 const onePlayerButton = document.getElementById("onePlayer");
 const twoPlayerButton = document.getElementById("twoPlayer");
 let playerOneName = document.getElementById('playerX');
 let playerTwoName = document.getElementById("playerO")
 
-        //game play
+        //game play variables
 let board = document.getElementById("board");
 let cell = document.getElementsByClassName("cells");
 
@@ -20,7 +20,7 @@ const gameState = {           //setting game state object; to keep track of move
     ]
 }
 
-let currentPlayer = gameState.players[0];       //this makes default current player 'x'; [1] would be 'o'
+let currentPlayer = gameState.players[0];       //tictactoe rules player x always first; [1] would be o.
 
 
 // player amount buttons
@@ -46,11 +46,14 @@ board.addEventListener('click', placeMark)
             const target = event.target;
             if(currentPlayer === 'x'){
                 target.innerText = 'x';
+                updateGameBoard(target);
             } else {
                 target.innerText = 'o';
+                updateGameBoard(target);
             }
             turnChange();
         }
+        console.log(event.target);
     }
 
 function turnChange(){
@@ -60,5 +63,27 @@ function turnChange(){
     } else {
         currentPlayer = gameState.players[0];
     }
-    console.log(currentPlayer)
+}
+
+function updateGameBoard(target){                       //reflecting the turns to the gameBoard array!
+    if(target.id === "cell1"){
+        gameState.board[0][0] = currentPlayer;
+    } else if(target.id === "cell2"){
+        gameState.board[0][1] = currentPlayer;
+    } else if(target.id === "cell3"){
+        gameState.board[0][2] = currentPlayer;
+    } else if(target.id === "cell4"){
+        gameState.board[1][0] = currentPlayer;
+    } else if(target.id === "cell5"){
+        gameState.board[1][1] = currentPlayer;
+    } else if(target.id === "cell6"){
+        gameState.board[1][2] = currentPlayer;
+    } else if(target.id === "cell7"){
+        gameState.board[2][0] = currentPlayer;
+    } else if(target.id === "cell8"){
+        gameState.board[2][1] = currentPlayer;
+    } else if(target.id === "cell9"){
+        gameState.board[2][2] = currentPlayer;
+    }
+    console.log(gameState.board);
 }
