@@ -40,18 +40,16 @@ twoPlayerButton.addEventListener('click', function(){
 
 //playing the game.
 
-board.addEventListener('click', placeMark)          // rn, this is reliant on currentPlayer; which should be switching after each turn. not yet
+board.addEventListener('click', placeMark)
     function placeMark(event){                          // this also needs to reflect the mark in the gameState array...
         if(event.target){
             const target = event.target;
             if(currentPlayer === 'x'){
                 target.innerText = 'x';
-                turnChange();
-            }
-            if(currentPlayer ==='o'){
+            } else {
                 target.innerText = 'o';
-                turnChange();
             }
+            turnChange();
         }
     }
 
@@ -59,9 +57,8 @@ function turnChange(){
     if(currentPlayer === 'x'){
         currentPlayer = gameState.players[1];
         
-    }
-    if(currentPlayer === 'o'){
+    } else {
         currentPlayer = gameState.players[0];
     }
-    console.log(currentPlayer);
+    console.log(currentPlayer)
 }
