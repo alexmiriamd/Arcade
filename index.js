@@ -43,15 +43,18 @@ twoPlayerButton.addEventListener('click', function(){
 board.addEventListener('click', placeMark)
     function placeMark(event){                        
         if(event.target){
+            console.log(event.target);
             const target = event.target;
-            if(currentPlayer === 'x'){
+            if(currentPlayer === 'x' && target.innerText === ''){
                 target.innerText = 'x';
                 updateGameBoard(target);
-            } else {
+                turnChange();
+            } else 
+            if(target.innerText === ''){
                 target.innerText = 'o';
                 updateGameBoard(target);
+                turnChange();
             }
-            turnChange();
         }
     }
 
@@ -124,3 +127,4 @@ function checkForWin(){                     //checking for all wins, invoked in 
         announceWinner();
     }
 }
+// how will i address ties?? if entire array is filled and no win then tie ? hm hm hm 
