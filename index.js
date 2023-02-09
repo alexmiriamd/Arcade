@@ -28,7 +28,7 @@ let currentPlayer = gameState.players[0];       //tic-tac-toe rules player x alw
 onePlayerButton.addEventListener('click', function(){
     let playerName = prompt('Player one name?', ['player one']);
     playerOneName.innerText = playerName;
-    playerTwoName.innerText = "computer"
+    playerTwoName.innerText = "computer"        ///if playerTwo name is computer run computer player
 })
 
 twoPlayerButton.addEventListener('click', function(){
@@ -67,7 +67,7 @@ function turnChange(){
     }
 }
 
-function updateGameBoard(target){                       //reflecting the turns to the gameBoard array
+function updateGameBoard(target){                //reflecting the turns to the gameBoard array
     if(target.id === "cell1"){
         gameState.board[0][0] = currentPlayer;
         checkForWin();
@@ -96,7 +96,6 @@ function updateGameBoard(target){                       //reflecting the turns t
         gameState.board[2][2] = currentPlayer;
         checkForWin();
     }
-    console.log(gameState.board);
 }
 
 function announceWinner(){
@@ -125,6 +124,18 @@ function checkForWin(){                     //checking for all wins, invoked in 
         announceWinner();
     } else if(gameState.board[0][2] === currentPlayer && gameState.board[1][1] === currentPlayer && gameState.board[2][0] === currentPlayer){
         announceWinner();
+    } else {
+        checkForTie();
+    }
+    
+}
+
+// how will i address ties?? if entire array is filled and no win is found then tie ? hm hm hm 
+
+function checkForTie(){
+    if(gameState.board[0].includes(null) || gameState.board[1].includes(null) || gameState.board[2].includes(null)){
+        console.log("game continues")
+    } else {
+        alert("oh no!! this is a tie")
     }
 }
-// how will i address ties?? if entire array is filled and no win then tie ? hm hm hm 
