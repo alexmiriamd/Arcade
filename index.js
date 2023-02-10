@@ -24,7 +24,8 @@ const gameState = {                             //setting game state object; to 
     ]
 }
 
-let currentPlayer = gameState.players[0];       //tic-tac-toe rules player x always first; [1] would be 'o'.
+let currentPlayer = gameState.players[0];       //tic-tac-toe rules: player x always first; [1] would be 'o'.
+
 
 
 //Player amount buttons
@@ -41,6 +42,52 @@ twoPlayerButton.addEventListener('click', function(){
     let playerName02 = prompt("Player two name?", ['player two']);
     playerTwoName.innerText = playerName02;
 })
+
+
+function computerPlayer(){                          //invoked in the turnChange function
+    if(playerTwoName.innerText === "computer"){
+        console.log('are we running this func?')
+        let target = randomCellFunc();
+
+        if(target === document.getElementById("cell1").id && document.getElementById("cell1").innerText === ''){
+            document.getElementById("cell1").innerText = 'o';
+        } else
+        if(target === document.getElementById("cell2").id && document.getElementById("cell2").innerText === ''){
+            document.getElementById("cell2").innerText = 'o';
+        } else
+        if(target === document.getElementById("cell3").id && document.getElementById("cell3").innerText === ''){
+            document.getElementById("cell3").innerText = 'o';
+        } else
+        if(target === document.getElementById("cell4").id && document.getElementById("cell4").innerText === ''){
+            document.getElementById("cell4").innerText = 'o';
+        } else
+        if(target === document.getElementById("cell5").id && document.getElementById("cell5").innerText === ''){
+            document.getElementById("cell5").innerText = 'o';
+        } else 
+        if(target === document.getElementById("cell6").id && document.getElementById("cell6").innerText === ''){
+            document.getElementById("cell6").innerText = 'o';
+        } else
+        if(target === document.getElementById("cell7").id && document.getElementById("cell7").innerText === ''){
+            document.getElementById("cell7").innerText = 'o';
+        } else
+        if(target === document.getElementById("cell8").id && document.getElementById("cell8").innerText === ''){
+            document.getElementById("cell8").innerText = 'o';
+        } else
+        if(target === document.getElementById("cell9").id && document.getElementById("cell9").innerText === ''){
+            document.getElementById("cell9").innerText = 'o';
+        } else{ 
+            computerPlayer();
+        }
+    }
+    turnChange();
+}
+
+function randomCellFunc(){                                      //returns random cell number 1-9 for computerPlayer
+    let randomNum = Math.floor(Math.random() * 9) +1;
+    let randomCell = `cell${randomNum}`
+    return randomCell
+}
+
 
 
 //playing the game.
@@ -65,7 +112,7 @@ board.addEventListener('click', placeMark)
 function turnChange(){
     if(currentPlayer === 'x'){
         currentPlayer = gameState.players[1];
-        
+        computerPlayer();
     } else {
         currentPlayer = gameState.players[0];
     }
