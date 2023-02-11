@@ -152,7 +152,7 @@ function updateGameBoard(target){                //reflecting the turns to the g
 function announceWinner(){
     // alert(`Yay!! ${currentPlayer} wins! Restart game?`);
     displayWinner.style.display = "block";
-    displayWinner.innerText = `Yay! ${currentPlayer} wins! Restart game?`;
+    displayWinner.innerText = `---Yay! ${currentPlayer} wins! Restart game?---`;
     currentState = gameState.state[1];
 }
 
