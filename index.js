@@ -4,6 +4,9 @@ const twoPlayerButton = document.getElementById("twoPlayer");
 let playerOneName = document.getElementById("playerX");
 let playerTwoName = document.getElementById("playerO");
 
+let choosePlayers = document.getElementById("pushPlayers"); //tells players to start game by selecting player amount first
+let displayWinner = document.getElementById("winner"); //tells players who won the game
+
 const resetButton = document.getElementById("resetButton");
 
 let board = document.getElementById("board");
@@ -31,8 +34,9 @@ let currentState = gameState.state[1];          // cant start making board until
 onePlayerButton.addEventListener('click', function(){
     let playerName = prompt('Player one name?', ['player one']);
     playerOneName.innerText = playerName;
-    currentState = gameState.state[0]
-    playerTwoName.innerText = "computer"        ///if playerTwo name is computer run computer player
+    choosePlayers.style.display = "none";
+    currentState = gameState.state[0];
+    playerTwoName.innerText = "computer";        ///if playerTwo name is computer run computer player
 })
 
 twoPlayerButton.addEventListener('click', function(){
@@ -40,11 +44,12 @@ twoPlayerButton.addEventListener('click', function(){
     playerOneName.innerText = playerName01;
     let playerName02 = prompt("Player two name?", ['player two']);
     playerTwoName.innerText = playerName02;
+    choosePlayers.style.display = "none";
     currentState = gameState.state[0];
 })
 
 
-function computerPlayer(){                          //computer playing as 'o'
+function computerPlayer(){                          //computer playing as 'o', only slight strategy choosing the most desired spots first
         console.log('are we running this func?')
 
         if(document.getElementById("cell5").innerText === ''){
@@ -55,17 +60,17 @@ function computerPlayer(){                          //computer playing as 'o'
             document.getElementById("cell1").innerText = 'o';
             updateGameBoard(document.getElementById("cell1"));
         } else
-        if(document.getElementById("cell3").innerText === ''){
-            document.getElementById("cell3").innerText = 'o';
-            updateGameBoard(document.getElementById("cell3"));
+        if(document.getElementById("cell9").innerText === ''){
+            document.getElementById("cell9").innerText = 'o';
+            updateGameBoard(document.getElementById("cell9"));
         } else
         if(document.getElementById("cell7").innerText === ''){
             document.getElementById("cell7").innerText = 'o';
             updateGameBoard(document.getElementById("cell7"));
         } else
-        if(document.getElementById("cell9").innerText === ''){
-            document.getElementById("cell9").innerText = 'o';
-            updateGameBoard(document.getElementById("cell9"));
+        if(document.getElementById("cell3").innerText === ''){
+            document.getElementById("cell3").innerText = 'o';
+            updateGameBoard(document.getElementById("cell3"));
         } else
         if(document.getElementById("cell2").innerText === ''){
             document.getElementById("cell2").innerText = 'o';
@@ -145,7 +150,9 @@ function updateGameBoard(target){                //reflecting the turns to the g
 }
 
 function announceWinner(){
-    setTimeout(alert(`Yay!! ${currentPlayer} wins!`), 3000);
+    // alert(`Yay!! ${currentPlayer} wins! Restart game?`);
+    displayWinner.style.display = "block";
+    displayWinner.innerText = `Yay! ${currentPlayer} wins! Restart game?`;
     currentState = gameState.state[1];
 }
 
@@ -181,7 +188,8 @@ function checkForTie(){                 //checking for tie if no win is logged
     if(gameState.board[0].includes(null) || gameState.board[1].includes(null) || gameState.board[2].includes(null)){
         console.log("game continues")
     } else {
-        alert("Oh no!! It's a tie!")
+        displayWinner.style.display = "block";
+        displayWinner.innerText = `Oh no! It's a tie! Play again?`;
     }
 }
 
@@ -209,5 +217,7 @@ function restartGame(){                 //putting game back to original gameStat
 
     currentPlayer = gameState.players[0];
     currentState = gameState.state[0];
-    console.log(gameState.board);
+
+    choosePlayers.style.display = "block";
+    displayWinner.style.display = "none"
 }

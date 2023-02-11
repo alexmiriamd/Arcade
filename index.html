@@ -13,7 +13,11 @@
         <h1>
             Tic-Tac-Toe
         </h1>
+        
         <div class = playerAmount>
+            <h3 id = "pushPlayers">
+                Choose how many players to start game!
+            </h3>
             <button type = "button" id = "onePlayer">
                 one player
                 <!-- pressing this makes the computer the other player, prompt player 1 name input after press -->
@@ -22,8 +26,16 @@
                 two player
                 <!-- two people playing on same computer, prompt players names input after press-->
             </button>
+            <h2 id = "winner"> <!-- displays win/tie instead of an alert box-->
+
+            </h2>
         </div>
     </header>
+    <div>
+        <button type = "reset" id = "resetButton">
+         restart game?
+        </button>
+     </div>
     <div id = "board">
         <div class="cell" id="cell1"><span></span></div>
         <div class="cell" id="cell2"><span></span></div>
@@ -48,11 +60,6 @@
                 
             </span>
         </p>
-    </div>
-    <div>
-       <button type = "reset" id = "resetButton">
-        restart the game
-       </button>
     </div>
 </body>
 </html>
