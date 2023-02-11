@@ -216,8 +216,11 @@ function restartGame(){                 //putting game back to original gameStat
     document.getElementById("cell9").innerText = "";
 
     currentPlayer = gameState.players[0];
-    currentState = gameState.state[0];
+    currentState = gameState.state[1];
+
+    playerOneName.innerText = '';
+    playerTwoName.innerText = '';
 
     choosePlayers.style.display = "block";
-    displayWinner.style.display = "none"
+    displayWinner.style.display = "none";
 }

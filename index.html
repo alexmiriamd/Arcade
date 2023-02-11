@@ -15,17 +15,19 @@
         </h1>
         
         <div class = playerAmount>
-            <h3 id = "pushPlayers">
-                Choose how many players to start game!
-            </h3>
-            <button type = "button" id = "onePlayer">
-                one player
-                <!-- pressing this makes the computer the other player, prompt player 1 name input after press -->
-            </button>
-            <button type = "button" id = "twoPlayer">
-                two player
-                <!-- two people playing on same computer, prompt players names input after press-->
-            </button>
+            <h2 id = "pushPlayers">
+                Choose how many players to start the game! :)
+            </h2>
+            <div class = "playerButtons">
+                <button type = "button" id = "onePlayer">
+                    one player
+                    <!-- pressing this makes the computer the other player, prompt player 1 name input after press -->
+                </button>
+                <button type = "button" id = "twoPlayer">
+                    two player
+                    <!-- two people playing on same computer, prompt players names input after press-->
+                </button>
+            </div>
             <h2 id = "winner"> <!-- displays win/tie instead of an alert box-->
 
             </h2>
@@ -47,19 +49,19 @@
         <div class="cell" id="cell8"><span></span></div>
         <div class="cell" id="cell9"><span></span></div>
       </div>  
-    <div>
-        <p>
+    <div class = playerNames>
+        <h3>
             player x: 
             <span id = "playerX">
                 
             </span>
-        </p>
-        <p>
+        </h3>
+        <h3>
             player o: 
             <span id = "playerO">
                 
             </span>
-        </p>
+        </h3>
     </div>
 </body>
 </html>
