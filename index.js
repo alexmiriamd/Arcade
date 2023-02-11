@@ -1,16 +1,10 @@
 
-
-// variables
-        //buttons and names
 const onePlayerButton = document.getElementById("onePlayer");
 const twoPlayerButton = document.getElementById("twoPlayer");
 let playerOneName = document.getElementById("playerX");
 let playerTwoName = document.getElementById("playerO");
 
 const resetButton = document.getElementById("resetButton");
-
-
-        //game play variables
 
 let board = document.getElementById("board");
 
@@ -28,6 +22,8 @@ const gameState = {                             //setting game state object; to 
 let currentPlayer = gameState.players[0];       //tic-tac-toe rules: player x always first; [1] would be 'o'.
 
 let currentState = gameState.state[1];          // cant start making board until player number chosen
+
+
 
 
 //Player amount buttons
@@ -91,16 +87,7 @@ function computerPlayer(){                          //computer playing as 'o'
 
 
 
-
-// function randomCellFunc(){                                      //returns random cell number 1-9 for computerPlayer
-//     let randomNum = Math.floor(Math.random() * 9) +1;
-//     let randomCell = `cell${randomNum}`
-//     return randomCell
-// }
-
-
-
-//playing the game.
+//playing the game:
 
 board.addEventListener('click', placeMark)
     function placeMark(event){  
@@ -158,11 +145,11 @@ function updateGameBoard(target){                //reflecting the turns to the g
 }
 
 function announceWinner(){
-    setTimeout(alert(`yay!! ${currentPlayer} wins!`), 3000);
+    setTimeout(alert(`Yay!! ${currentPlayer} wins!`), 3000);
     currentState = gameState.state[1];
 }
 
-function checkForWin(){                     //checking for all wins, invoked in updateGameBoard function
+function checkForWin(){                     //checking for all wins, (invoked in updateGameBoard function)
     //row wins
     if(gameState.board[0][0] === currentPlayer && gameState.board[0][1] === currentPlayer && gameState.board[0][2] === currentPlayer){
         announceWinner();
@@ -194,7 +181,7 @@ function checkForTie(){                 //checking for tie if no win is logged
     if(gameState.board[0].includes(null) || gameState.board[1].includes(null) || gameState.board[2].includes(null)){
         console.log("game continues")
     } else {
-        alert("oh no!! there has been a tie.") //maybe put a confirm box to ask, reset game? instead of alert.
+        alert("Oh no!! It's a tie!")
     }
 }
 
