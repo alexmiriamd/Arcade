@@ -189,7 +189,7 @@ function checkForTie(){                 //checking for tie if no win is logged
         console.log("game continues")
     } else {
         displayWinner.style.display = "block";
-        displayWinner.innerText = `Oh no! It's a tie! Play again?`;
+        displayWinner.innerText = `Oh no! It's a tie! restart game?`;
     }
 }
 
